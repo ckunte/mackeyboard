@@ -30,14 +30,14 @@ F12::SendInput {Volume_Up}
 ; Cursor Movement
 
 ; cmd + arrows - start & end of lines, with shift for selecting text
-#{Left}::Send, {Home}
-#{Right}::Send, {End}
-#+{Left}::sendInput +{Home}
-#+{Right}::Send, +{End}
-!{Left}::Send, ^{Left}
-!{Right}::Send, ^{Right}
-!+{Left}::Send, ^+{Left}
-!+{Right}::Send, ^+{Right}
+;#{Left}::Send, {Home}
+;#{Right}::Send, {End}
+;#+{Left}::sendInput +{Home}
+;#+{Right}::Send, +{End}
+;!{Left}::Send, ^{Left}
+;!{Right}::Send, ^{Right}
+;!+{Left}::Send, ^+{Left}
+;!+{Right}::Send, ^+{Right}
 
 ; F13-15, standard windows mapping
 F13::SendInput {PrintScreen}
