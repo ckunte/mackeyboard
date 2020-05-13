@@ -68,7 +68,7 @@ For application not listed in the table above run [get class script][gc] as foll
     C:\Apps\misc\ahk> AutoHotkeyU64.exe "getclass.ahk"
     ```
 
-2. Click on the Windows application whose `ahk_class` you're looking to find. A message box appears displaying the applicaton's `ahk_class`. Set `Sleep, to say 5000` (corresponds to 5 seconds) in the `getclass.ahk` script if the message box appears quicker than you've had a chance to click on the application you're looking to detect like so: 
+2. Click on the Windows application whose `ahk_class` you're looking to find. A message box appears displaying the applicaton's `ahk_class`. Set `Sleep` to `5000` (corresponds to 5 seconds) in the `getclass.ahk` script if the message box appears quicker than you've had a chance to click on the application you're looking to detect like so: 
 
     ```autohotkey
     Sleep, 5000
