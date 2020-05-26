@@ -8,6 +8,7 @@
 ; + = SHIFT
 ; # = WIN
 
+#NoEnv ; For security
 #InstallKeybdHook
 #SingleInstance force
 SetTitleMatchMode 2
@@ -26,13 +27,13 @@ SendMode Input
 
 ; text expander snippets
 
-::tx::Thank you
+:*:tx::Thank you
 
-::wfh::working from home
+:*:wfh::working from home
 
-::t=::TENDERER
+:*:t=::TENDERER
 
-::c=::COMPANY
+:*:c=::COMPANY
 
 ; task done for to-do lists
 :c*:txd::
@@ -43,6 +44,7 @@ Return
 ; Application specific:
 
 ; In Microsoft Word or Microsoft Excel only
+
 #If, WinActive("ahk_class OpusApp") or WinActive("ahk_class XLMAIN")
 
 ::tc=::TENDERER's response is noted. COMPANY considers this item closed.
@@ -52,6 +54,17 @@ Return
 ::tqn::This qualification is not required.
 
 #If
+
+;In Word or Outlook only
+
+; #If, WinActive("ahk_class OpusApp") or WinActive("ahk_class rctrl_renwnd32")
+; 
+; ; bracket and quote completion (albeit w/o selected text)
+; 
+; ;#Include, C:\Apps\misc\ahk\bra.ahk
+; ;#Include, C:\Apps\misc\ahk\twrap.ahk
+;
+; #If
 
 ; In Skype for Business only
 #IfWinActive ahk_class LyncTabFrameHostWindowClass
@@ -64,6 +77,7 @@ Return
 
 ; In Microsoft Outlook only
 #IfWinActive ahk_class rctrl_renwnd32
+
 ::s-::--Chetan
 
 ::fyi::For your kind info.
@@ -83,8 +97,8 @@ This is a meeting request to discuss
 
 ::addo::
 (
-Address line 1
-Address line 2
+Shell House, 562 Wellington St.
+Perth WA 6000, Australia
 )
 
 ; Scripting replies in Outlook 2016 with AutoHotkey
