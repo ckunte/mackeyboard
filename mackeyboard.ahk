@@ -12,7 +12,7 @@
 ; ^ = CTRL
 ; + = SHIFT
 ; # = WIN
-
+#NoEnv ; For security
 #InstallKeybdHook
 #SingleInstance force
 SetTitleMatchMode 2
@@ -26,18 +26,6 @@ RAlt & F9::SendInput {Media_Next}
 F10::SendInput {Volume_Mute}
 F11::SendInput {Volume_Down}
 F12::SendInput {Volume_Up}
-
-; Cursor Movement
-
-; cmd + arrows - start & end of lines, with shift for selecting text
-;#{Left}::Send, {Home}
-;#{Right}::Send, {End}
-;#+{Left}::sendInput +{Home}
-;#+{Right}::Send, +{End}
-;!{Left}::Send, ^{Left}
-;!{Right}::Send, ^{Right}
-;!+{Left}::Send, ^+{Left}
-;!+{Right}::Send, ^+{Right}
 
 ; F13-15, standard windows mapping
 F13::SendInput {PrintScreen}
@@ -91,14 +79,18 @@ F15::SendInput {Pause}
 ; New tab
 #t::Send, ^t
 
-; Close tab
-#w::Send, ^w
-
 ; Close a window
 #w::Send, #{F4}
 
 ; Close application (cmd + q to Alt + F4)
 #q::Send, !{F4}
+
+; Cursor Movement: Home, End, PageUp and PageDown Mac style
+
+LWin & Left::Send, {Home}
+LWin & Right::Send, {End}
+LWin & Up::Send, {PgUp}
+LWin & Down::Send, {PgDn}
 
 ; Remap Windows + Tab to Alt + Tab.
 LWin & Tab::AltTab
@@ -114,59 +106,49 @@ RWin & l::Send, #l
 
 ; text expander snippets
 
-::t=::TENDERER
+:*:tx::Thank you
 
-::c=::COMPANY
+:*:wfh::working from home
+
+:*:t=::TENDERER
+
+:*:c=::COMPANY
 
 ; task done for to-do lists
-
-; Get Date in ISO 8601 format with `txd`
 :c*:txd::
   FormatTime, CurrentDateTime,, yyyy-MM-dd
   SendInput @done(%CurrentDateTime%)
 Return
 
-::addo::
-(
-Company Name
-Company Address
-)
-
 ; Application specific:
+; In Microsoft Word or Microsoft Excel only
 
-; In Cygwin
-#IfWinActive, ahk_class mintty
-; git commands
+#If, WinActive("ahk_class OpusApp") or WinActive("ahk_class XLMAIN")
 
-::gl=::git log --pretty=format:"%h - %an, %ar: %s"
+::tc=::TENDERER's response is noted. COMPANY considers this item closed.
 
-::gc=::git commit -m ""
+::twq::TENDERER is requested to withdraw this qualification.
 
-::gp=::git push -u origin master
+::tqn::This qualification is not required.
 
-#IfWinActive
+#If
 
-; Google Chrome
-#IfWinActive, ahk_class Chrome_WidgetWin_1
+; In Skype for Business only
 
-; Show Web Developer Tools with cmd + alt + i
-#!i::Send, {F12}
+#IfWinActive ahk_class LyncTabFrameHostWindowClass
 
-; Show source code with cmd + alt + u
-#!u::Send, ^u
+::gm::Good morning,
+
+::gf::Good afternoon,
 
 #IfWinActive
 
-; Microsoft Outlook
-#IfWinActive Microsoft Outlook ahk_class rctrl_renwnd32
+; In Microsoft Outlook only
 
+#IfWinActive ahk_class rctrl_renwnd32
 ::s-::--Chetan
 
 ::fyi::For your kind info.
-
-::tx::Thank you
-
-::wfh::working from home
 
 ::kr::Kind regards,
 
@@ -181,18 +163,22 @@ This is a meeting request to discuss
 
 ::txe::Thank you for your message.
 
+::addo::
+(
+Shell House, 562 Wellington St.
+Perth WA 6000, Australia
+)
+
 ; Scripting replies in Outlook 2016 with AutoHotkey
-; --------------------------------------------------------
-; Hit Alt + x to create an email reply (template) with 
-; salutation to sender's First Name from selected / opened 
-; email in Microsoft Outlook, which looks like this:
+; Hit Alt + x to create a reply email (template) with salutation to sender's 
+; First Name from selected / opened email in Microsoft Outlook, which looks like this:
 ; 
 ; Hi <FirstName>, 
 ; 
 ; Thank you for your email.
 ; 
 ; <Signature appears here, if set-up in Outlook>
-; --------------------------------------------------------
+;
 !x::
 ol := COMObjActive("Outlook.Application").ActiveExplorer.Selection.Item(1)
 From := ol.SenderName
@@ -212,24 +198,5 @@ SendInput, ^+r
 Sleep, 100
 SendInput, Hi %FirstName%, {Enter 2}Thank you for your email.{Enter 2}
 Return
-#IfWinActive
-
-; Microsoft Word or Microsoft Excel
-#If, WinActive("ahk_class OpusApp") or WinActive("ahk_class XLMAIN")
-
-::tc=::TENDERER's response is noted. COMPANY considers this item closed.
-
-::twq::TENDERER is requested to withdraw this qualification.
-
-::tqn::This qualification is not required.
-
-#If
-
-; Skype for Business
-#IfWinActive, ahk_class LyncTabFrameHostWindowClass
-
-::gm::Good morning,
-
-::gf::Good afternoon,
 
 #IfWinActive
