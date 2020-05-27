@@ -82,6 +82,9 @@ F15::SendInput {Pause}
 ; Close a window
 #w::Send, #{F4}
 
+; Print (this leaves RWin + p for projector settings)
+LWin & p::Send, ^p
+
 ; Close application (cmd + q to Alt + F4)
 #q::Send, !{F4}
 
@@ -94,12 +97,6 @@ LWin & Down::Send, {PgDn}
 
 ; Remap Windows + Tab to Alt + Tab.
 LWin & Tab::AltTab
-
-; Browser bar
-LWin & l::Send, F6
-
-; Lock Screen
-RWin & l::Send, #l
 
 ; minimize windows
 #m::WinMinimize,a
@@ -146,6 +143,15 @@ Return
 ; In Microsoft Outlook only
 
 #IfWinActive ahk_class rctrl_renwnd32
+
+; Delete mail
+LWin & d::Send, ^d
+
+; Go to the search bar
+LWin & /::Send, F3
+
+; text expanders
+
 ::s-::--Chetan
 
 ::fyi::For your kind info.
@@ -170,7 +176,7 @@ Perth WA 6000, Australia
 )
 
 ; Scripting replies in Outlook 2016 with AutoHotkey
-; Hit Alt + x to create a reply email (template) with salutation to sender's 
+; Hit Ctrl + Win + r to create a reply email (template) with salutation to sender's 
 ; First Name from selected / opened email in Microsoft Outlook, which looks like this:
 ; 
 ; Hi <FirstName>, 
