@@ -80,13 +80,13 @@ F15::SendInput {Pause}
 #t::Send, ^t
 
 ; Close a window
-#w::Send, #{F4}
+LWin & w::Send, ^w
 
 ; Print (this leaves RWin + p for projector settings)
 LWin & p::Send, ^p
 
 ; Close application (cmd + q to Alt + F4)
-#q::Send, !{F4}
+LWin & q::Send, !{F4}
 
 ; Cursor Movement: Home, End, PageUp and PageDown Mac style
 
@@ -130,6 +130,27 @@ Return
 
 #If
 
+;In Word or Outlook only
+
+#If, WinActive("ahk_class OpusApp") or WinActive("ahk_class rctrl_renwnd32")
+
+; bracket and quote completion (albeit w/o selected text)
+
+#Include, C:\Apps\misc\ahk\autocomp.ahk
+#Include, C:\Apps\misc\ahk\twrap.ahk
+
+#If
+
+; In Sublime Text 3 only
+
+#IfWinActive ahk_class PX_WINDOW_CLASS
+
+; Close file
+
+LWin & w::Send, ^w
+
+#IfWinActive
+
 ; In Skype for Business only
 
 #IfWinActive ahk_class LyncTabFrameHostWindowClass
@@ -146,9 +167,6 @@ Return
 
 ; Delete mail
 LWin & d::Send, ^d
-
-; Go to the search bar
-LWin & /::Send, F3
 
 ; text expanders
 
