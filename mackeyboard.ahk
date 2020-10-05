@@ -103,10 +103,20 @@ LWin & q::Send, !{F4}
 ; Italicise
 #i::Send, ^i
 
-; Cursor Movement: Home, End, PageUp and PageDown Mac style
+; Cursor Movement (w/ Text Select if Shift is pressed): Home, End, PageUp and PageDown Mac style
 
-LWin & Left::Send, {Home}
-LWin & Right::Send, {End}
+LWin & Left::
+If GetKeyState("Shift")
+ Send, +{Home}
+Else Send, {Home}
+
+; Select Text to end or start
+LWin & Right::
+If GetKeyState("Shift")
+ Send, +{End}
+Else Send, {End}
+Return
+
 LWin & Up::Send, {PgUp}
 LWin & Down::Send, {PgDn}
 
