@@ -109,8 +109,8 @@ LWin & Left::
 If GetKeyState("Shift")
  Send, +{Home}
 Else Send, {Home}
+Return
 
-; Select Text to end or start
 LWin & Right::
 If GetKeyState("Shift")
  Send, +{End}
