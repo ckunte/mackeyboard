@@ -50,6 +50,9 @@ F15::SendInput {Pause}
 ; Copy
 #c::Send, ^c
 
+; Del
+#BS:: Send, {Del}
+
 ; Paste
 #v::Send, ^v
 
