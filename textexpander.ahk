@@ -76,7 +76,7 @@ This is a meeting request to discuss
 ::txe::Thank you for your message.
 
 ; Scripting replies in Outlook 2016 with AutoHotkey
-; Hit Ctrl + Win + r to create a reply email (template) with salutation to sender's 
+; Hit Alt + x to create a reply email (template) with salutation to sender's 
 ; First Name from selected / opened email in Microsoft Outlook, which looks like this:
 ; 
 ; Hi <FirstName>, 
