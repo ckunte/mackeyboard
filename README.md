@@ -1,7 +1,7 @@
 # mackeyboard
 _Mac Keyboard to Windows Key Mappings_
 
-As humans, we have tactile memories. Years of accumulated muscle memory is important for us to be efficient at work. When our fingers sense a Mac keyboard underneath, they instinctively adapt to a Mac style of hotkeys. This repository should assist in ensuring continuity with the help of [AutoHotkey][ahk] key-mapping tool.
+Years of accumulated muscle memory is useful to be efficient at work. When our fingers sense a Mac keyboard underneath, they instinctively adapt to a Mac-style of hot keys. This repository should assist in ensuring continuity when using a Mac keyboard on Windows operating system with the help of [AutoHotkey][ahk] key-mapping tool.
 
 To get this working,
 
