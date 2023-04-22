@@ -1,8 +1,12 @@
-::tx::Thank you
+; Expand text and save keystrokes, 2016 ckunte
+
+::ty::thank you
+
+::tx::thanks,
 
 :*:wfh::working from home
 
-:*:t=::TENDERER
+; :*:t=::TENDERER
 
 :*:c=::COMPANY
 
