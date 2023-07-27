@@ -12,26 +12,29 @@
 ; ^ = CTRL
 ; + = SHIFT
 ; # = WIN
-#NoEnv ; For security
-#KeyHistory 0
-#InstallKeybdHook
+TraySetIcon "C:\Apps\misc\ahkscripts\macf.ico", 1
+Return
+
+; #NoEnv ; For security
+; #KeyHistory 0
+; #InstallKeybdHook
 #SingleInstance force
-SetTitleMatchMode 2
-SendMode Input
+; SetTitleMatchMode 2
+; SendMode Input
 
 ; Media Keys
 
-RAlt & F7::SendInput {Media_Prev}
-RAlt & F8::SendInput {Media_Play_Pause}
-RAlt & F9::SendInput {Media_Next}
-RAlt & F10::SendInput {Volume_Mute}
-RAlt & F11::SendInput {Volume_Down}
-RAlt & F12::SendInput {Volume_Up}
+RAlt & F7::SendInput "{Media_Prev}"
+RAlt & F8::SendInput "{Media_Play_Pause}"
+RAlt & F9::SendInput "{Media_Next}"
+RAlt & F10::SendInput "{Volume_Mute}"
+RAlt & F11::SendInput "{Volume_Down}"
+RAlt & F12::SendInput "{Volume_Up}"
 
 ; F13-15, standard windows mapping
-F13::SendInput {PrintScreen}
-F14::SendInput {ScrollLock}
-F15::SendInput {Pause}
+F13::SendInput "{PrintScreen}"
+F14::SendInput "{ScrollLock}"
+F15::SendInput "{Pause}"
 
 ;F16-19 custom app launchers, see http://www.autohotkey.com/docs/Tutorial.htm for usage info
 ; F16::Run <Insert Project Homepage URL here>
@@ -45,87 +48,75 @@ F15::SendInput {Pause}
 ; MacOS System Shortcuts (from https://support.apple.com/en-au/HT201236 )
 
 ; Cut
-#x::Send, ^x
+#x::SendInput "^x"
 
 ; Copy
-#c::Send, ^c
+#c::SendInput "^c"
 
 ; Del
-#BS:: Send, {Del}
+#BS:: SendInput "{Del}"
 
 ; Paste
-#v::Send, ^v
+#v::SendInput "^v"
 
 ; Undo
-#z::Send, ^z
+#z::SendInput "^z"
 
 ; Redo
-+#z::Send, ^y
++#z::SendInput "^y"
 
 ; Select All
-#a::Send, ^a
+#a::SendInput "^a"
 
 ; Find
-#f::Send, ^f
+#f::SendInput "^f"
 
 ; Find Next
-#g::Send, F3
+#g::SendInput "{F3}"
 
 ; minimize windows
-#m::WinMinimize,a
+#m::WinMinimize "a"
 
 ; Open
-#o::Send, ^o
+#o::SendInput "^o"
 
 ; Print (this leaves RWin + p for projector settings)
-LWin & p::Send, ^p
+LWin & p::SendInput "^p"
 
 ; Save
-#s::Send, ^s
+#s::SendInput "^s"
 
 ; New tab
-#t::Send, ^t
+#t::SendInput "^t"
 
 ; New
-#n::Send, ^n
+#n::SendInput "^n"
 
 ; Reply
-#r::Send, ^r
+#r::SendInput "^r"
 
 ; Close a window
-LWin & w::Send, ^w
+LWin & w::SendInput "^w"
 
 ; Close application (cmd + q to Alt + F4)
-LWin & q::Send, !{F4}
+LWin & q::SendInput "!{F4}"
 
 ; Document shortcuts
 
 ; Boldface
-#b::Send, ^b
+#b::SendInput "^b"
 
 ; Italicise
-#i::Send, ^i
+#i::SendInput "^i"
 
 ; Cursor Movement (w/ Text Select if Shift is pressed): Home, End, PageUp and PageDown Mac style
 
-LWin & Left::
-If GetKeyState("Shift")
- Send, +{Home}
-Else Send, {Home}
-Return
-
-LWin & Right::
-If GetKeyState("Shift")
- Send, +{End}
-Else Send, {End}
-Return
-
-LWin & Up::Send, {PgUp}
-LWin & Down::Send, {PgDn}
+#Include C:\Apps\misc\ahkscripts\cursor_mac_style.ahk
 
 ; Remap Windows + Tab to Alt + Tab.
 LWin & Tab::AltTab
 
 ; text expander snippets
 
-#Include, C:\Apps\misc\ahk\textexpander.ahk
+#Include C:\Apps\misc\ahkscripts\textexpander.ahk
+

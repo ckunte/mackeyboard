@@ -12,14 +12,14 @@ To get this working,
 3. Run the following in Command Prompt to activate all key mappings:
 
     ```dos    
-    C:\Apps\misc\ahk> AutoHotkeyU64.exe "mackeyboard.ahk"
+    C:\Apps\misc\ahk\v2\AutoHotkey64.exe "C:\Apps\misc\ahkscripts_v2\mackeyboard.ahk"
     ```
 
 4. Optional: To automate this at boot, a batch file, say `mackeyboard.bat`, can be created with the following contents:
 
     ```dos
     @echo off
-    start C:\Apps\misc\ahk\AutoHotkeyU64.exe "C:\Apps\misc\ahk\mackeyboard.ahk"
+    C:\Apps\misc\ahk\v2\AutoHotkey64.exe "C:\Apps\misc\ahkscripts_v2\mackeyboard.ahk"
     exit
     ```
 
@@ -35,46 +35,16 @@ The batch file can then be placed under the Startup folder. (Get to the Startup 
 To write application-specific shortcuts, as an example, the following may be used:
 
 ```autohotkey
-; In Skype for Business only
-#IfWinActive ahk_class LyncTabFrameHostWindowClass
+; In Microsoft Outlook only
+;#IfWinActive ahk_class rctrl_renwnd32
+#HotIf (WinActive("ahk_class rctrl_renwnd32"))
 
 ::gm::Good morning,
 
 ::gf::Good afternoon,
 
-#IfWinActive
+#HotIf
 ```
-
-The following are known `ahk_class` for various applications:
-
-| Application                    | `ahk_class`                   |
-| ------------------------------ | ----------------------------- |
-| Command Prompt                 | `ConsoleWindowClass`          |
-| Cygwin                         | `mintty`                      |
-| Explorer                       | `CabinetWClass`               |
-| Google Chrome, Microsoft Teams | `Chrome_WidgetWin_1`          |
-| Microsoft Excel                | `XLMAIN`                      |
-| Microsoft Outlook              | `rctrl_renwnd32`              |
-| Microsoft Word                 | `OpusApp`                     |
-| Skype Main window              | `CommunicatorMainWindowClass` |
-| Skype Message window           | `LyncTabFrameHostWindowClass` |
-| Sublime Text 3                 | `PX_WINDOW_CLASS`             |
-
-For application not listed in the table above run [get class script][gc] as follows:
-
-1. At Command Prompt (`cmd`):
-
-    ```dos
-    C:\Apps\misc\ahk> AutoHotkeyU64.exe "getclass.ahk"
-    ```
-
-2. Click on the Windows application whose `ahk_class` you're looking to find. A message box appears displaying the applicaton's `ahk_class`. Set `Sleep` to `5000` (corresponds to 5 seconds) in the `getclass.ahk` script if the message box appears quicker than you've had a chance to click on the application you're looking to detect like so: 
-
-    ```autohotkey
-    Sleep, 5000
-    WinGetClass, class, A
-    MsgBox, The active window's class is "%class%".
-    ```
 
 ## Trivia
 
@@ -85,4 +55,3 @@ Not wanting to buy yet another, I pulled my seldom-used Apple Bluetooth wireless
 It runs just fine in the background capturing all my hot keys, pressed in Mac style, and transforming them into Windows hot keys on-the-fly. In addition, it's also good as a simple text expander, which saves me some repetitive typing.
 
 [ahk]: https://www.autohotkey.com/ "AutoHotkey"
-[gc]: https://github.com/ckunte/mackeyboard/blob/master/getclass.ahk "mackeyboard/getclass.ahk at master · ckunte/mackeyboard · GitHub"
