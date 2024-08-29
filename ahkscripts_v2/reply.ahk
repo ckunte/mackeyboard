@@ -1,3 +1,4 @@
+!x::{
 ; Ensure Outlook is running
 if !ComObjGet("Outlook.Application")
 {
@@ -37,4 +38,5 @@ try
 catch
 {
     MsgBox "An error occurred: " . A_ThisFunc
+}
 }
