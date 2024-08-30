@@ -43,7 +43,7 @@
         
         ; Send the reply with the template
         Send("^r") ; Open reply
-        Sleep(1) ; Wait for the reply window to open
+        Sleep(10) ; Wait for the reply window to open
         Send("Hi " . firstName . ",{Enter 2}Thank you for your email.{Enter 2}")
     } else {
         MsgBox "No valid Outlook item found."
