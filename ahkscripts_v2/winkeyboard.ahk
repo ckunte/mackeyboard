@@ -37,6 +37,8 @@ LWin & q::Send "!{F4}"
 
 #Include C:\Apps\misc\ahkscripts\textexpander.ahk
 
+#Include C:\Apps\misc\ahkscripts\reply.ahk
+
 ; For the "MagicForce Smart 49" keyboard
 
 ; #Include C:\Apps\misc\ahkscripts\magicforce.ahk
