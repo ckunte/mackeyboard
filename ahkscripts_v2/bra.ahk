@@ -5,7 +5,6 @@
     cSelected := A_Clipboard ; 
     ClipWait
     Send "(" cSelected ")"
-    return
 }
 
 ;; these below snippets work, but don't need
@@ -13,29 +12,24 @@
 ; :*?:(::{
 ;     Send "{Raw}()"
 ;     Send "{Left 1}"
-;     return
 ; }
 ; 
 ; :*:'::{
 ;     Send "{Raw}''"
 ;     Send "{Left 1}"
-;     return
 ; }
 ; 
 ; :*:"::{
 ;     Send '{Raw}""'
 ;     Send '{Left 1}'
-;     return
 ; }
 ;  
 ; :*?:{::{
 ;     Send "{Raw}{}"
 ;     Send "{Left 1}"
-;     return    
 ; }
 ;  
 ; :*?:[::{
 ;     Send "{Raw}[]"
 ;     Send "{Left 1}"
-;     return
 ; }
