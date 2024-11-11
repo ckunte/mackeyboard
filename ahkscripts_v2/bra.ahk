@@ -34,13 +34,9 @@
     return
 }
 
-^+):: {
-    ClipSaved := ClipboardAll()
-    SendEvent "^c"
-    cSelected := A_Clipboard
-    Sleep 10
-    A_Clipboard := ClipSaved
-    ;MsgBox cSelected
+^):: {
+    SendEvent "^c" ; presumes text is selected
+    cSelected := A_Clipboard ; 
+    ClipWait
     Send "(" cSelected ")"
-    A_Clipboard := ""
 }
